@@ -1,0 +1,38 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: InventoryServiceApplication
+  data:
+    mongodb:
+      username: admin
+      database: fueldb
+      port: 27017
+      host: localhost
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+    consumer:
+      group-id: groupId
+      bootstrap-servers: localhost:9092
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      auto-offset-reset: earliest
+
+
+order:
+  topic:
+    name: ordertopic
+
+schedule:
+  topic:
+    name: schedules-topic
+
+auto:
+  create:
+    topics:
+      enable: true
